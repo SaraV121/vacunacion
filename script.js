@@ -1,11 +1,7 @@
 const $ = id => document.getElementById(id);
-
-// EDO: dy/dt = k (M - y)
 const f = (P, y) => P.k * (P.M - y);
-// Solución analítica: y(t) = M - (M - y0) e^(-kt)
 const exacta = (P, t) => P.M - (P.M - P.y0) * Math.exp(-P.k * t);
 
-// Método de Heun (Runge-Kutta de orden 2)
 function heun(P, h, n) {
   let y = P.y0; const r = [y];
   for (let i = 0; i < n; i++) {
@@ -17,7 +13,6 @@ function heun(P, h, n) {
   return r;
 }
 
-// Runge-Kutta clásico de orden 4
 function rk4(P, h, n) {
   let y = P.y0; const r = [y];
   for (let i = 0; i < n; i++) {
