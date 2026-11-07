@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campaña de vacunación: Heun vs RK4</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>Campaña de vacunación barrial: ¿cuándo alcanzamos la meta?</h1>
+
+<div class="card">
+<b>Problema.</b> Un centro de salud de barrio quiere vacunar a su población contra la influenza. Cuantas más personas faltan por vacunar, más rápido se vacuna; al acercarse a la población total, el ritmo baja. <b>Pregunta:</b> ¿en cuántos días se llega al 80 % de cobertura?<br>
+<b>Modelo:</b> dy/dt = k·(M − y), y(0) = y₀. &nbsp; <b>Solución exacta:</b> y(t) = M − (M − y₀)·e<sup>−kt</sup>.<br>
+<small>y = personas vacunadas (personas), t = tiempo (días), M = población total (personas), k = tasa de vacunación (1/día). Los parámetros son hipotéticos, no datos reales.</small>
+</div>
+
+<div class="card">
+<div class="grid">
+<div><label>y₀: vacunados iniciales (personas)</label><input id="y0" type="number" value="200"></div>
+<div><label>M: población total (personas)</label><input id="M" type="number" value="2000"></div>
+<div><label>k: tasa (1/día)</label><input id="k" type="number" step="0.001" value="0.03"></div>
+<div><label>T: tiempo de simulación (días)</label><input id="T" type="number" value="60"></div>
+<div><label>h₁: paso (días)</label><input id="h1" type="number" step="0.5" value="10"></div>
+<div><label>h₂: paso (días)</label><input id="h2" type="number" step="0.5" value="5"></div>
+</div>
+<button id="btn">Simular</button>
+<div id="err"></div>
+</div>
+
+<div id="out"></div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
